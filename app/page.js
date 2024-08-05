@@ -91,13 +91,16 @@ export default function Home() {
 
   return (
     <Box
-      width="100vw"
-      height="100vh"
-      display={"flex"}
-      justifyContent={"center"}
-      flexDirection={"column"}
-      alignItems={"center"}
-      gap={2}
+      sx={{
+        width: "100vw",
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "flex-start",
+        gap: 2,
+        p: 2,
+      }}
     >
       <Modal
         open={open}
@@ -131,18 +134,18 @@ export default function Home() {
           </Stack>
         </Box>
       </Modal>
-      <Button variant="contained" onClick={handleOpen}>
-        Add New Item
-      </Button>
       <TextField
         label="Search Items"
         variant="outlined"
         fullWidth
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        sx={{ marginBottom: 2 }}
+        sx={{ width: "80%", mb: 3 }}
       />
-      <Box border={"1px solid #333"} width="100%" overflow={"auto"}>
+      <Button variant="contained" onClick={handleOpen}>
+        Add New Item
+      </Button>
+      <Box sx={{ width: "100%", overflowY: "auto" }}>
         {filteredInventory.map(({ name, quantity }) => (
           <Card
             key={name}
